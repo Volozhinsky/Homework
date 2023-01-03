@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="app_name">Homework</string>
+    <string name="counterTextView">Counter = %1$d </string>
+    <string name="incrementButtonTextViewText">Increment counter</string>
+    <string name="startSecondActivityButtonTextViewText">Show result</string>
+    <string name="result_textview_text">"Current count result is %1$d "</string>
+</resources>
