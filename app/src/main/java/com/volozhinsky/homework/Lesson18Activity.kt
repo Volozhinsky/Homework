@@ -37,7 +37,7 @@ class Lesson18Activity : AppCompatActivity() {
     }
 
     private fun incrementCounter() {
-        if (counter < 10) {
+        if (counter < 9) {
             counter += 1
         } else {
             counter = 0
