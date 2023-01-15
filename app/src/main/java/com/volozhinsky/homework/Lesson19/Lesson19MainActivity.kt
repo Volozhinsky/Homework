@@ -16,7 +16,7 @@ class Lesson19MainActivity : AppCompatActivity() {
         findViewById<RecyclerView>(R.id.rvFilmList).apply {
             this.adapter = adapter
             layoutManager =
-            LinearLayoutManager(this@Lesson19MainActivity, LinearLayoutManager.VERTICAL, false)
+                LinearLayoutManager(this@Lesson19MainActivity, LinearLayoutManager.VERTICAL, false)
         }
     }
 }
