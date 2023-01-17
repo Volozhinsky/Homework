@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Homework</string>
+    <string name="counterTextView">Cчетчик = %1$d </string>
+    <string name="incrementButtonTextViewText">Увеличить счетчик</string>
+    <string name="startSecondActivityButtonTextViewText">Открыть результат</string>
+    <string name="result_textview_text">"Текущее значение счетчика %1$d "</string>
+    <string name="nextPicButtonText" translatable="false">Следующая картинка</string>
 </resources>

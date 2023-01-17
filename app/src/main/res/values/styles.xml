@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="views" parent="Theme.Homework">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_margin">3dp</item>
+    </style>
+
+    <style name="buttons" parent="views">
+        <item name="android:background">@drawable/button_background</item>
+    </style>
+
+    <style name="rv_items">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">5dp</item>
+    </style>
+</resources>
