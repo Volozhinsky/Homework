@@ -11,5 +11,25 @@
         <item>https://proprikol.ru/wp-content/uploads/2020/02/kartinki-pro-udivlenie-4.jpg</item>
         <item>https://proprikol.ru/wp-content/uploads/2020/02/kartinki-pro-udivlenie-12.jpg</item>
         <item>https://донэллиот.рф/wp-content/uploads/2022/01/30..jpg</item>
-     </string-array>
+    </string-array>
+
+    <string-array name="colorNames">
+        <item>Красный</item>
+        <item>Оранжевый</item>
+        <item>Желтый</item>
+        <item>Зеленый</item>
+        <item>Голубой</item>
+        <item>Синий</item>
+        <item>Фиолетывый</item>
+    </string-array>
+
+    <integer-array name="colorsResultBack">
+        <item>@color/red</item>
+        <item>@color/orange</item>
+        <item>@color/yellow</item>
+        <item>@color/green</item>
+        <item>@color/blue</item>
+        <item>@color/darkblue</item>
+        <item>@color/purple</item>
+    </integer-array>
 </resources>

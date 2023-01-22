@@ -5,4 +5,5 @@
     <string name="startSecondActivityButtonTextViewText">Открыть результат</string>
     <string name="result_textview_text">"Текущее значение счетчика %1$d "</string>
     <string name="nextPicButtonText" translatable="false">Следующая картинка</string>
+    <string name="button_L21" translatable="false">Открыть фрагмент</string>
 </resources>
