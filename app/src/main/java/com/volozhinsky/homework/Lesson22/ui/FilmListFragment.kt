@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.volozhinsky.homework.Lesson22.model.models.FilmInfo
 import com.volozhinsky.homework.Lesson22.presenter.FilmInfoPresenter
@@ -20,18 +21,21 @@ class FilmListFragment : Fragment(), FilmInfoView {
 
         requireActivity().supportFragmentManager.beginTransaction()
             .addToBackStack("ListFragment")
-            .replace(R.id.flDescribtionLayout, filmDescribtionFragment).commit()
+            .replace(R.id.fragment_L22, filmDescribtionFragment).commit()
     }
 
-    private val adapter = FilmListAdapter(onClicFunc)
+    private val resyvlerAdapter = FilmListAdapter(onClicFunc)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_film_list, container, false)
-        val recycler = view.findViewById<RecyclerView>(R.id.rvFilmListMVP)
-        recycler.adapter = adapter
+        view.findViewById<RecyclerView>(R.id.rvFilmListMVP).apply {
+        adapter = resyvlerAdapter
+        layoutManager =
+            LinearLayoutManager(this@FilmListFragment.context, LinearLayoutManager.VERTICAL, false)
+        }
         return view
     }
 
@@ -41,7 +45,7 @@ class FilmListFragment : Fragment(), FilmInfoView {
     }
 
     override fun setViewAdapterData(listFilmInfo: List<FilmInfo>) {
-        adapter.setFilmInfoData(listFilmInfo)
+        resyvlerAdapter.setFilmInfoData(listFilmInfo)
     }
 
     override fun onDestroy() {
