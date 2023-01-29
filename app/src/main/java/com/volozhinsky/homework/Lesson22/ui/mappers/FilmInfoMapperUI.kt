@@ -6,11 +6,11 @@ import com.volozhinsky.homework.Lesson22.ui.models.FilmInfoUI
 class FilmInfoMapperUI {
     operator fun invoke(response: FilmInfo) = with(response) {
         FilmInfoUI(
-            name = name ?: "",
-            Rated = Rated ?: 0.0,
-            hasOscar = hasOscar ?: false,
-            linkToPoster = linkToPoster ?: "",
-            description = description ?: ""
+            name = name,
+            Rated = Rated,
+            hasOscar = hasOscar,
+            linkToPoster = linkToPoster,
+            description = description
         )
     }
 }

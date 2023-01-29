@@ -13,6 +13,7 @@ import com.volozhinsky.homework.Lesson22.ui.films_full.presenter.FilmInfoPresent
 import com.volozhinsky.homework.Lesson22.ui.films_full.presenter.FilmInfoPresenterImpl
 import com.volozhinsky.homework.Lesson22.ui.FilmListAdapter
 import com.volozhinsky.homework.Lesson22.ui.film_describtion.FilmDescribtionFragment
+import com.volozhinsky.homework.Lesson22.ui.films_low_rated.LowRatedFilmsFragment
 import com.volozhinsky.homework.Lesson22.ui.models.FilmInfoUI
 import com.volozhinsky.homework.R
 
@@ -41,7 +42,12 @@ class FilmListFragment : Fragment(), FilmInfoView {
     }
 
     private fun startFragmentLowRatedFilms() {
-        TODO("Not yet implemented")
+        val lowRatedFilmsFragment =
+            LowRatedFilmsFragment.newInstance()
+        requireActivity().supportFragmentManager.beginTransaction()
+            .addToBackStack("ListFragment")
+            .replace(R.id.fragment_L22, lowRatedFilmsFragment).commit()
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

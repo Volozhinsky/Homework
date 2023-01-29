@@ -1,12 +1,13 @@
 package com.volozhinsky.homework.Lesson22.data
 
 import com.volozhinsky.homework.Lesson22.Server
+import com.volozhinsky.homework.Lesson22.data.mappers.FilmInfoMapper
+import com.volozhinsky.homework.Lesson22.domain.models.FilmInfo
 import com.volozhinsky.homework.Lesson22.domain.repository.FilmInfoRepository
-import com.volozhinsky.homework.Lesson22.data.models.FilmInfoResponse
 
 class FilmInfoRepositoryImpl: FilmInfoRepository {
-
-    override fun getFilmInfoList(): List<FilmInfoResponse> {
-        return Server.getFilmListData()
+    val mapper = FilmInfoMapper()
+    override fun getFilmInfoList(): List<FilmInfo> {
+        return Server.getFilmListData().map { mapper(it) }
     }
 }

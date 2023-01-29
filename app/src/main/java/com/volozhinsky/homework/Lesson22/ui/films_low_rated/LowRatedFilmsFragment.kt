@@ -34,6 +34,11 @@ class LowRatedFilmsFragment : Fragment(),LowRatedFilmInfoView {
         return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        presenter?.getLowRatedFilmInfo()
+    }
+
     private val onClicFunc: (FilmInfoUI) -> Unit = { filminfo ->
         val filmDescribtionFragment =
             FilmDescribtionFragment.newInstance(filminfo.name, filminfo.description)
@@ -44,7 +49,7 @@ class LowRatedFilmsFragment : Fragment(),LowRatedFilmInfoView {
 
     companion object {
 
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance() =
             LowRatedFilmsFragment()
     }
 
