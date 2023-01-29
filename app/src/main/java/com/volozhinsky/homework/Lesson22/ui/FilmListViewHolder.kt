@@ -6,11 +6,12 @@ import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.volozhinsky.homework.Lesson22.model.models.FilmInfo
+import com.volozhinsky.homework.Lesson22.data.models.FilmInfoResponse
+import com.volozhinsky.homework.Lesson22.ui.models.FilmInfoUI
 import com.volozhinsky.homework.R
 
-class FilmListViewHolder(itemView: View,private val onClicFunc: (FilmInfo) -> Unit) : RecyclerView.ViewHolder(itemView) {
-    fun bind(item: FilmInfo) {
+class FilmListViewHolder(itemView: View,private val onClicFunc: (FilmInfoUI) -> Unit) : RecyclerView.ViewHolder(itemView) {
+    fun bind(item: FilmInfoUI) {
         val name = itemView.findViewById<TextView>(R.id.tvFilmName)
         val poster = itemView.findViewById<ImageView>(R.id.ivPoster)
         val rated = itemView.findViewById<TextView>(R.id.tvRated)

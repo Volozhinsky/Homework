@@ -1,6 +1,6 @@
-package com.volozhinsky.homework.Lesson22.model.models
+package com.volozhinsky.homework.Lesson22.data.models
 
-data class FilmInfo(
+data class FilmInfoResponse(
     val name: String,
     val Rated: Double,
     val hasOscar: Boolean,
