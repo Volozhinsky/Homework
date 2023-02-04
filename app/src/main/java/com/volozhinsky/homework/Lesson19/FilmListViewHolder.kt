@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.volozhinsky.homework.R
 
-class FilmListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class FilmListViewHolder(itemView: View,private val onClicFunc: (FilmInfo) -> Unit) : RecyclerView.ViewHolder(itemView) {
     fun bind(item: FilmInfo) {
         val name = itemView.findViewById<TextView>(R.id.tvFilmName)
         val poster = itemView.findViewById<ImageView>(R.id.ivPoster)
@@ -18,7 +18,9 @@ class FilmListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         loadPoster(item.linkToPoster, poster)
         rated.text = item.Rated.toString()
         hasOscar.isVisible = item.hasOscar
-
+        itemView.setOnClickListener{
+            onClicFunc.invoke(item)
+        }
     }
 
     private fun loadPoster(url: String, imageView: ImageView) {

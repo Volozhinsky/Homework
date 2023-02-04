@@ -2,7 +2,7 @@ package com.volozhinsky.homework.Lesson22
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.volozhinsky.homework.Lesson22.ui.FilmListFragment
+import com.volozhinsky.homework.Lesson22.ui.films_full.FilmListFragment
 import com.volozhinsky.homework.R
 
 class Lesson22MainActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.volozhinsky.homework.Lesson19
+package com.volozhinsky.homework.Lesson22.domain.models
 
 data class FilmInfo(
     val name: String,

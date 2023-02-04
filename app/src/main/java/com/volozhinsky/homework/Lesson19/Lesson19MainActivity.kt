@@ -8,15 +8,31 @@ import androidx.recyclerview.widget.RecyclerView.Recycler
 import com.volozhinsky.homework.R
 
 class Lesson19MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lesson19_main)
         val filmList = Server.getFilmListData()
-        val adapter = FilmListAdapter(filmList)
+        val adapter = FilmListAdapter(filmList,onClicFunc)
         findViewById<RecyclerView>(R.id.rvFilmList).apply {
             this.adapter = adapter
             layoutManager =
                 LinearLayoutManager(this@Lesson19MainActivity, LinearLayoutManager.VERTICAL, false)
+        }
+    }
+    private val onClicFunc: (FilmInfo) -> Unit = {filminfo ->
+        val filmDescribtionFragment = FilmDescribtionFragment.newInstance(filminfo.name,filminfo.description)
+
+        supportFragmentManager.beginTransaction()
+            .addToBackStack("testFragment")
+            .add(R.id.flDescribtionLayout, filmDescribtionFragment).commit()
+    }
+
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount == 0){
+            super.onBackPressed()
+        }else{
+            supportFragmentManager.popBackStack()
         }
     }
 }
