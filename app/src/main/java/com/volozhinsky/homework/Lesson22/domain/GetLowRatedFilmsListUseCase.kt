@@ -6,7 +6,6 @@ import javax.inject.Inject
 
 class GetLowRatedFilmsListUseCase @Inject constructor(private val repository: FilmInfoRepository) {
 
-
     operator fun invoke(): List<FilmInfo> = repository.getFilmInfoList()
         .filter { it.Rated < LOW_RATING }
 

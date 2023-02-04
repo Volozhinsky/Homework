@@ -6,20 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.volozhinsky.homework.Lesson22.data.models.FilmInfoResponse
-import com.volozhinsky.homework.Lesson22.ui.films_full.presenter.FilmInfoPresenter
-import com.volozhinsky.homework.Lesson22.ui.films_full.presenter.FilmInfoPresenterImpl
 import com.volozhinsky.homework.Lesson22.ui.FilmListAdapter
-import com.volozhinsky.homework.Lesson22.ui.film_describtion.FilmDescribtionFragment
-import com.volozhinsky.homework.Lesson22.ui.films_low_rated.LowRatedFilmsFragment
-import com.volozhinsky.homework.Lesson22.ui.models.FilmInfoUI
 import com.volozhinsky.homework.R
+import dagger.hilt.android.AndroidEntryPoint
 
-class FilmListFragment : Fragment(), FilmInfoView {
+@AndroidEntryPoint
+class FilmListFragment : Fragment() {
 
-    private var presenter: FilmInfoPresenter? = null
+    private val filmListInfoViewModel by viewModels<FilmListViewModel>()
     private var resyvlerAdapter: FilmListAdapter? = null
 
     override fun onCreateView(
@@ -31,51 +29,34 @@ class FilmListFragment : Fragment(), FilmInfoView {
             resyvlerAdapter = FilmListAdapter(onClicFunc)
             adapter = resyvlerAdapter
             layoutManager =
-               LinearLayoutManager(this@FilmListFragment.context, LinearLayoutManager.VERTICAL, false)
+                LinearLayoutManager(
+                    this@FilmListFragment.context,
+                    LinearLayoutManager.VERTICAL,
+                    false
+                )
         }
-        presenter = FilmInfoPresenterImpl(this)
-        val startFragmentLowRatedFilmsButton = view.findViewById<Button>(R.id.bStartFragmentLowRatedFilms)
-        startFragmentLowRatedFilmsButton.setOnClickListener{
+        view.findViewById<Button>(R.id.bStartFragmentLowRatedFilms).setOnClickListener {
             startFragmentLowRatedFilms()
         }
         return view
     }
 
     private fun startFragmentLowRatedFilms() {
-        val lowRatedFilmsFragment =
-            LowRatedFilmsFragment.newInstance()
-        requireActivity().supportFragmentManager.beginTransaction()
-            .addToBackStack("ListFragment")
-            .replace(R.id.fragment_L22, lowRatedFilmsFragment).commit()
-
+        val action =
+            FilmListFragmentDirections.actionFilmListFragmentToLowRatedFilmsFragment()
+        findNavController().navigate(action)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        presenter?.getFilmInfo()
+        filmListInfoViewModel.liveData.observe(viewLifecycleOwner) {
+            resyvlerAdapter?.setFilmInfoData(it)
+        }
+        filmListInfoViewModel.getFilmInfo()
     }
 
-    override fun setViewAdapterData(listFilmInfoResponse: List<FilmInfoUI>) {
-        resyvlerAdapter?.setFilmInfoData(listFilmInfoResponse)
+    private val onClicFunc: (String) -> Unit = { nameOfFilmInfo ->
+        val action = FilmListFragmentDirections.actionFilmListFragmentToFilmDescribtionFragment(nameOfFilmInfo)
+        findNavController().navigate(action)
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        presenter?.onClear()
-    }
-
-    private val onClicFunc: (FilmInfoUI) -> Unit = { filminfo ->
-        val filmDescribtionFragment =
-            FilmDescribtionFragment.newInstance(filminfo.name, filminfo.description)
-        requireActivity().supportFragmentManager.beginTransaction()
-            .addToBackStack("ListFragment")
-            .replace(R.id.fragment_L22, filmDescribtionFragment).commit()
-    }
-
-    companion object {
-
-        fun newInstance() = FilmListFragment()
-    }
-
 }

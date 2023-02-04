@@ -6,16 +6,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.volozhinsky.homework.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FilmDescribtionFragment : Fragment() {
+
+    private val filmDescribtionViewModel by viewModels<FilmDescribtionViewModel>()
+    val args: FilmDescribtionFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arguments?.let {
-            view.findViewById<TextView>(R.id.tvName).text = it.getString(ARG_NAME)
-            view.findViewById<TextView>(R.id.tvDescribtion).text = it.getString(ARG_DECSRIBTION)
+        val nameTextView = view.findViewById<TextView>(R.id.tvName)
+        val describtionTextView = view.findViewById<TextView>(R.id.tvDescribtion)
+        filmDescribtionViewModel.liveData.observe(viewLifecycleOwner) {
+            nameTextView?.text = it.name
+            describtionTextView?.text = it.description
         }
+        filmDescribtionViewModel.getFilmInfo(args.nameOfFilminfo)
     }
 
     override fun onCreateView(
@@ -23,18 +33,5 @@ class FilmDescribtionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_film_describtion, container, false)
-    }
-
-    companion object {
-        const val ARG_DECSRIBTION = "ARG_DECSRIBTION"
-        const val ARG_NAME = "ARG_NAME"
-
-        fun newInstance(name: String, describtion: String) =
-            FilmDescribtionFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_DECSRIBTION,describtion)
-                    putString(ARG_NAME, name)
-                }
-            }
     }
 }

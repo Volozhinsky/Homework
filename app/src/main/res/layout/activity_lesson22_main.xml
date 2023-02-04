@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_L22"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Lesson22.Lesson22MainActivity"/>
+    tools:context=".Lesson22.ui.Lesson22MainActivity">
+
+    <fragment
+        android:id="@+id/hostNavId"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:navGraph = "@navigation/main_navigation_graph"
+        android:name="androidx.navigation.fragment.NavHostFragment"/>
+</FrameLayout>

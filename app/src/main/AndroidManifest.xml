@@ -35,7 +35,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Lesson22.Lesson22MainActivity"
+            android:name=".Lesson22.ui.Lesson22MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

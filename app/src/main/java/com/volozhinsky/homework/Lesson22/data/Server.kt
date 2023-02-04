@@ -1,4 +1,4 @@
-package com.volozhinsky.homework.Lesson22
+package com.volozhinsky.homework.Lesson22.data
 
 import com.volozhinsky.homework.Lesson22.data.models.FilmInfoResponse
 

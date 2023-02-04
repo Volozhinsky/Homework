@@ -10,7 +10,7 @@ import com.volozhinsky.homework.Lesson22.data.models.FilmInfoResponse
 import com.volozhinsky.homework.Lesson22.ui.models.FilmInfoUI
 import com.volozhinsky.homework.R
 
-class FilmListViewHolder(itemView: View,private val onClicFunc: (FilmInfoUI) -> Unit) : RecyclerView.ViewHolder(itemView) {
+class FilmListViewHolder(itemView: View,private val onClicFunc: (String) -> Unit) : RecyclerView.ViewHolder(itemView) {
     fun bind(item: FilmInfoUI) {
         val name = itemView.findViewById<TextView>(R.id.tvFilmName)
         val poster = itemView.findViewById<ImageView>(R.id.ivPoster)
@@ -21,7 +21,7 @@ class FilmListViewHolder(itemView: View,private val onClicFunc: (FilmInfoUI) -> 
         rated.text = item.Rated.toString()
         hasOscar.isVisible = item.hasOscar
         itemView.setOnClickListener{
-            onClicFunc.invoke(item)
+            onClicFunc.invoke(item.name)
         }
     }
 

@@ -7,7 +7,7 @@ import com.volozhinsky.homework.Lesson22.data.models.FilmInfoResponse
 import com.volozhinsky.homework.Lesson22.ui.models.FilmInfoUI
 import com.volozhinsky.homework.R
 
-class FilmListAdapter(private val onClicFunc: (FilmInfoUI) -> Unit) :
+class FilmListAdapter(private val onClicFunc: (String) -> Unit) :
     RecyclerView.Adapter<FilmListViewHolder>() {
 
     private var mListFilmInfoResponse: MutableList<FilmInfoUI> = mutableListOf()
