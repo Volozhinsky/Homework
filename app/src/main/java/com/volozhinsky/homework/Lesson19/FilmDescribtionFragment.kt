@@ -1,4 +1,4 @@
-package com.volozhinsky.homework.Lesson22.ui
+package com.volozhinsky.homework.Lesson19
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,6 +9,9 @@ import android.widget.TextView
 import com.volozhinsky.homework.R
 
 class FilmDescribtionFragment : Fragment() {
+    private var describtion: String? = null
+    private var name: String? = null
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

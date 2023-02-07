@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigatoin_graph"
+    app:startDestination="@id/filmListFragment">
+
+    <fragment
+        android:id="@+id/filmListFragment"
+        android:name="com.volozhinsky.homework.Lesson22.ui.films_full.FilmListFragment"
+        android:label="FilmListFragment" >
+        <action
+            android:id="@+id/action_filmListFragment_to_filmDescribtionFragment"
+            app:destination="@id/filmDescribtionFragment" />
+        <action
+            android:id="@+id/action_filmListFragment_to_lowRatedFilmsFragment"
+            app:destination="@id/lowRatedFilmsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/filmDescribtionFragment"
+        android:name="com.volozhinsky.homework.Lesson22.ui.film_describtion.FilmDescribtionFragment"
+        android:label="FilmDescribtionFragment" >
+        <argument
+            android:name="nameOfFilminfo"
+            app:argType="string"
+            android:defaultValue="&quot;&quot;" />
+    </fragment>
+    <fragment
+        android:id="@+id/lowRatedFilmsFragment"
+        android:name="com.volozhinsky.homework.Lesson22.ui.films_low_rated.LowRatedFilmsFragment"
+        android:label="fragment_low_rated_films"
+        tools:layout="@layout/fragment_low_rated_films" >
+        <action
+            android:id="@+id/action_lowRatedFilmsFragment_to_filmDescribtionFragment"
+            app:destination="@id/filmDescribtionFragment" />
+    </fragment>
+</navigation>

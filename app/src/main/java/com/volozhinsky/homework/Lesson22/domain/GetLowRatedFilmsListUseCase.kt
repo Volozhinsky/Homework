@@ -1,13 +1,12 @@
 package com.volozhinsky.homework.Lesson22.domain
 
-import com.volozhinsky.homework.Lesson22.data.FilmInfoRepositoryImpl
 import com.volozhinsky.homework.Lesson22.domain.models.FilmInfo
 import com.volozhinsky.homework.Lesson22.domain.repository.FilmInfoRepository
+import javax.inject.Inject
 
-class GetLowRatedFilmsListUseCase {
-    private val repository: FilmInfoRepository = FilmInfoRepositoryImpl()
+class GetLowRatedFilmsListUseCase @Inject constructor(private val repository: FilmInfoRepository) {
 
-    operator fun invoke(): List<FilmInfo> = repository.getFilmInfoList()
+    suspend  operator fun invoke(): List<FilmInfo> = repository.getFilmInfoList()
         .filter { it.Rated < LOW_RATING }
 
     companion object {
