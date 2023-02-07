@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.volozhinsky.homework.R
 import dagger.hilt.android.AndroidEntryPoint
+import java.lang.Thread.sleep
 
 @AndroidEntryPoint
 class FilmDescribtionFragment : Fragment() {
@@ -26,6 +27,14 @@ class FilmDescribtionFragment : Fragment() {
             describtionTextView?.text = it.description
         }
         filmDescribtionViewModel.getFilmInfo(args.nameOfFilminfo)
+//        val uiRannable =   Runnable{
+//                sleep(10000)
+//                nameTextView.text = "ФоновыйПоток"
+//                nameTextView.post{
+//                    nameTextView.text = "ФоновыйПоток"
+//            }
+//        }
+//        Thread(uiRannable).start()
     }
 
     override fun onCreateView(

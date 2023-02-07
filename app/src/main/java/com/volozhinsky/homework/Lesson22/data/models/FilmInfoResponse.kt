@@ -6,4 +6,9 @@ data class FilmInfoResponse(
     val hasOscar: Boolean? = null,
     val linkToPoster: String? = null,
     val description: String? = null
-)
+){
+
+    companion object {
+        fun getDefault() = FilmInfoResponse()
+    }
+}

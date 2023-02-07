@@ -28,4 +28,5 @@
         app:layout_constraintTop_toBottomOf="@+id/tvName"
         tools:text="Хороший фильм" />
 
+
 </androidx.constraintlayout.widget.ConstraintLayout>
