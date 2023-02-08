@@ -21,10 +21,15 @@ class FilmInfoRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getFilmByName(name: String): FilmInfo {
-        return mapper(Server.getFilmByName(name))
+        return withContext(Dispatchers.IO) {
+            mapper(Server.getFilmByName(name))
+        }
     }
 
+
     override suspend fun getUser(): UserFavorites {
-        return userFavoritesMapper(Server.getUser())
+        return withContext(Dispatchers.IO) {
+            userFavoritesMapper(Server.getUser())
+        }
     }
 }
