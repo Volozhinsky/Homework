@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Lesson22.ui.films_low_rated.LowRatedFilmsFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvLowRatedFilmList"
+    <FrameLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-</FrameLayout>
+        android:layout_height="match_parent"
+        tools:context=".lesson22.ui.films_low_rated.LowRatedFilmsFragment">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvLowRatedFilmList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+</layout>
